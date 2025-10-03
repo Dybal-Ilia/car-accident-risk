@@ -32,6 +32,9 @@ def download_dataset(competition:str, dest_path:str, unzip:bool=True, force:bool
 
 
 def map_data(basepath:str):
+    """"Maps file names (without extensions) to their full paths in a given directory.
+    Args:
+        basepath (str): The base directory path containing the files."""
     mapping = {}
     for file in os.listdir(basepath):
         mapping[file.split('.')[0]] = os.path.join(basepath, file)
