@@ -1,6 +1,7 @@
 import os
 import zipfile
 from kaggle.api.kaggle_api_extended import KaggleApi
+import pandas as pd
 
 
 def download_dataset(competition:str, dest_path:str, unzip:bool=True, force:bool=False, quiet:bool=False):
@@ -37,5 +38,5 @@ def map_data(basepath:str):
         basepath (str): The base directory path containing the files."""
     mapping = {}
     for file in os.listdir(basepath):
-        mapping[file.split('.')[0]] = os.path.join(basepath, file)
+        mapping[file.split('.')[0]] = pd.read_csv(os.path.join(basepath, file))
     return mapping
