@@ -29,3 +29,10 @@ def download_dataset(competition:str, dest_path:str, unzip:bool=True, force:bool
                 with zipfile.ZipFile(full, "r") as z:
                     z.extractall(dest_path)
                 os.remove(full)
+
+
+def map_data(basepath:str):
+    mapping = {}
+    for file in os.listdir(basepath):
+        mapping[file.split('.')[0]] = os.path.join(basepath, file)
+    return mapping
